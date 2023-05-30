@@ -1,0 +1,6 @@
+version: 1
+tempban:
+  # Tempban time in seconds -- default: 2 days (172800 seconds)
+  time: 172800
+  # Tempban message -- default: "You have been temporarily banned for 2 days."
+  message: "§cYou have been temporarily banned for 2 days."

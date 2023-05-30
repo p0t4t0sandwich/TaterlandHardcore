@@ -1,0 +1,12 @@
+name: TempBanDeath
+version: '1.0.0'
+main: ca.sperrer.p0t4t0sandwich.tempbandeath.bukkit.BukkitMain
+author: p0t4t0sandwich
+description: A plugin that temporarily bans players when they die.
+api-version: 1.13
+folia-supported: true
+commands:
+  untempban:
+    description: Unbans a player from TempBanDeath.
+    usage: /<command> <player>
+    permission: tempbandeath.untempban
