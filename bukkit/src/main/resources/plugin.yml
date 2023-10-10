@@ -1,12 +1,11 @@
-name: TempBanDeath
+name: TaterlandHardcore
 version: '${version}'
-main: ca.sperrer.p0t4t0sandwich.tempbandeath.bukkit.BukkitMain
+main: dev.neuralnexus.taterlandhardcore.bukkit.BukkitMain
 author: p0t4t0sandwich
-description: A plugin that temporarily bans players when they die.
-api-version: 1.13
+description: Plugin used by the Taterland Hardcore server.
 folia-supported: true
 commands:
   untempban:
     description: Unbans a player from TempBanDeath.
     usage: /<command> <player>
-    permission: tempbandeath.untempban
+    permission: taterlandhardcore.untempban

@@ -1,4 +1,4 @@
-package ca.sperrer.p0t4t0sandwich.tempbandeath.common;
+package dev.neuralnexus.taterlandhardcore.common;
 
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.ForkJoinTask;

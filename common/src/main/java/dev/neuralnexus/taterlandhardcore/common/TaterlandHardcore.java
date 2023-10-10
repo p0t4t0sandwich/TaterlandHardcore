@@ -1,4 +1,4 @@
-package ca.sperrer.p0t4t0sandwich.tempbandeath.common;
+package dev.neuralnexus.taterlandhardcore.common;
 
 import dev.dejvokep.boostedyaml.YamlDocument;
 
@@ -6,32 +6,32 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
 
-public class TempBanDeath {
+public class TaterlandHardcore {
     /**
-     * Properties of the TempBanDeath class.
+     * Properties of the TaterlandHardcore class.
      * config: The config file
      * logger: The logger
-     * singleton: The singleton instance of the TempBanDeath class
-     * STARTED: Whether the TempBanDeath has been started
+     * singleton: The singleton instance of the TaterlandHardcore class
+     * STARTED: Whether the TaterlandHardcore has been started
      */
     private static YamlDocument config;
     private static YamlDocument tempbans;
     private final Object logger;
-    private static TempBanDeath singleton = null;
+    private static TaterlandHardcore singleton = null;
     private boolean STARTED = false;
 
     /**
-     * Constructor for the TempBanDeath class.
+     * Constructor for the TaterlandHardcore class.
      * @param configPath The path to the config file
      * @param logger The logger
      */
-    public TempBanDeath(String configPath, Object logger) {
+    public TaterlandHardcore(String configPath, Object logger) {
         singleton = this;
         this.logger = logger;
 
         // Config
         try {
-            config = YamlDocument.create(new File("./" + configPath + "/TempBanDeath", "config.yml"),
+            config = YamlDocument.create(new File("./" + configPath + "/TaterlandHardcore", "config.yml"),
                     Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream("config.yml"))
             );
             config.reload();
@@ -41,8 +41,9 @@ public class TempBanDeath {
         }
 
         // Tempbans
+        // TODO: Convert to serializable GSON object
         try {
-            tempbans = YamlDocument.create(new File("./" + configPath + "/TempBanDeath", "tempbans.yml"),
+            tempbans = YamlDocument.create(new File("./" + configPath + "/TaterlandHardcore", "tempbans.yml"),
                     Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream("tempbans.yml"))
             );
             tempbans.reload();
@@ -53,10 +54,10 @@ public class TempBanDeath {
     }
 
     /**
-     * Getter for the singleton instance of the TempBanDeath class.
+     * Getter for the singleton instance of the TaterlandHardcore class.
      * @return The singleton instance
      */
-    public static TempBanDeath getInstance() {
+    public static TaterlandHardcore getInstance() {
         return singleton;
     }
 
@@ -79,12 +80,12 @@ public class TempBanDeath {
      */
     public void start() {
         if (STARTED) {
-            useLogger("TempBanDeath has already started!");
+            useLogger("TaterlandHardcore has already started!");
             return;
         }
         STARTED = true;
 
-        useLogger("TempBanDeath has been started!");
+        useLogger("TaterlandHardcore has been started!");
     }
 
     /**

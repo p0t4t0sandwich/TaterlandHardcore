@@ -1,14 +1,16 @@
-package ca.sperrer.p0t4t0sandwich.tempbandeath.bukkit;
+package dev.neuralnexus.taterlandhardcore.bukkit;
 
-import ca.sperrer.p0t4t0sandwich.tempbandeath.bukkit.commands.UnbanCommand;
-import ca.sperrer.p0t4t0sandwich.tempbandeath.bukkit.listeners.BukkitEventListener;
-import ca.sperrer.p0t4t0sandwich.tempbandeath.common.TempBanDeath;
+import dev.neuralnexus.taterlandhardcore.bukkit.commands.UnbanCommand;
+import dev.neuralnexus.taterlandhardcore.bukkit.listeners.BukkitEntityListener;
+import dev.neuralnexus.taterlandhardcore.bukkit.listeners.BukkitPlayerListener;
+import dev.neuralnexus.taterlandhardcore.common.TaterlandHardcore;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import static ca.sperrer.p0t4t0sandwich.tempbandeath.common.Utils.*;
+import static dev.neuralnexus.taterlandhardcore.common.Utils.*;
 
 public final class BukkitMain extends JavaPlugin {
-    public TempBanDeath tempBanDeath;
+    public TaterlandHardcore taterlandHardcore;
 
     // Singleton instance
     private static BukkitMain instance;
@@ -41,25 +43,27 @@ public final class BukkitMain extends JavaPlugin {
         // Singleton instance
         instance = this;
 
-        getLogger().info("TempBanDeath is running on " + getServerType() + ".");
+        getLogger().info("TaterlandHardcore is running on " + getServerType() + ".");
 
-        // Start TempBanDeath
-        tempBanDeath = new TempBanDeath("plugins", getLogger());
-        tempBanDeath.start();
+        // Start TaterlandHardcore
+        taterlandHardcore = new TaterlandHardcore("plugins", getLogger());
+        taterlandHardcore.start();
 
-        // Register event listener
-        getServer().getPluginManager().registerEvents(new BukkitEventListener(), this);
+        // Register event listeners
+        PluginManager pm = getServer().getPluginManager();
+        pm.registerEvents(new BukkitPlayerListener(), this);
+        pm.registerEvents(new BukkitEntityListener(), this);
 
         // Register commands
         getCommand("untempban").setExecutor(new UnbanCommand());
 
         // Plugin enable message
-        getLogger().info("TempBanDeath has been enabled!");
+        getLogger().info("TaterlandHardcore has been enabled!");
     }
 
     @Override
     public void onDisable() {
         // Plugin disable message
-        getLogger().info("TempBanDeath has been disabled!");
+        getLogger().info("TaterlandHardcore has been disabled!");
     }
 }

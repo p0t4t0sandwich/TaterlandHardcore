@@ -1,13 +1,13 @@
-package ca.sperrer.p0t4t0sandwich.tempbandeath.bukkit.commands;
+package dev.neuralnexus.taterlandhardcore.bukkit.commands;
 
-import ca.sperrer.p0t4t0sandwich.tempbandeath.bukkit.BukkitMain;
+import dev.neuralnexus.taterlandhardcore.bukkit.BukkitMain;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import static ca.sperrer.p0t4t0sandwich.tempbandeath.common.Utils.runTaskAsync;
+import static dev.neuralnexus.taterlandhardcore.common.Utils.runTaskAsync;
 
 public class UnbanCommand implements CommandExecutor {
     BukkitMain plugin = BukkitMain.getInstance();
@@ -26,14 +26,14 @@ public class UnbanCommand implements CommandExecutor {
 
                 // Check if the player is tempbanned
                 String player_uuid = args[0];
-                if (!plugin.tempBanDeath.isTempbanned(player_uuid)) {
+                if (!plugin.taterlandHardcore.isTempbanned(player_uuid)) {
                     sender.sendMessage("§cThis player is not tempbanned!");
                     success.set(true);
                     return;
                 }
 
                 // Unban the player
-                plugin.tempBanDeath.unbanPlayer(player_uuid);
+                plugin.taterlandHardcore.unbanPlayer(player_uuid);
                 sender.sendMessage("§aSuccessfully unbanned player!");
                 success.set(true);
 

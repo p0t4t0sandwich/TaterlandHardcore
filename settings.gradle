@@ -1,22 +1,12 @@
 pluginManagement {
     repositories {
         gradlePluginPortal()
-
-        // Fabric
-        maven {
-            name = 'Fabric'
-            url = 'https://maven.fabricmc.net/'
-        }
     }
 }
 
-rootProject.name = 'TempBanDeath'
+rootProject.name = 'TaterlandHardcore'
 
 include(
         'bukkit',
-//        'bungee',
-//        'fabric',
-//        'forge',
-//        'velocity',
         'common'
 )
