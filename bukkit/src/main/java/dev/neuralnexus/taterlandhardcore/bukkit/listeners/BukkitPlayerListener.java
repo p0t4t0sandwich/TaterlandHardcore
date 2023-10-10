@@ -14,6 +14,8 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import java.util.ArrayList;
+
 /**
  * Bukkit player listener
  */
@@ -57,6 +59,8 @@ public class BukkitPlayerListener implements Listener {
 //        });
     }
 
+
+    private ArrayList<String> playersOnRoof = new ArrayList<>();
     /**
      * Nether roof protection
      * @param event The event
@@ -65,7 +69,10 @@ public class BukkitPlayerListener implements Listener {
     public void onPlayerMoveOnNetherRoof(PlayerMoveEvent event) {
         if (event.getTo() == null) return;
         if (event.getPlayer().getWorld().getEnvironment().equals(World.Environment.NETHER) && event.getTo().getY() >= 127) {
+            if (playersOnRoof.contains(event.getPlayer().getUniqueId().toString())) return;
             Player player = event.getPlayer();
+            playersOnRoof.add(player.getUniqueId().toString());
+
             // Send warning title message
             player.sendTitle("§cWARNING", "§fYou are on the nether roof, you have §e45 seconds§f to leave!", 10, 70, 20);
 
@@ -78,6 +85,8 @@ public class BukkitPlayerListener implements Listener {
                     player.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 20 * 60 * 5, 1));
                 }
             }, 45 * 20);
+        } else {
+            playersOnRoof.remove(event.getPlayer().getUniqueId().toString());
         }
     }
 
