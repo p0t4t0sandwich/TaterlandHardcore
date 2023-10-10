@@ -3,18 +3,20 @@ package dev.neuralnexus.taterlandhardcore.bukkit;
 import dev.neuralnexus.taterlandhardcore.bukkit.commands.UnbanCommand;
 import dev.neuralnexus.taterlandhardcore.bukkit.listeners.BukkitEntityListener;
 import dev.neuralnexus.taterlandhardcore.bukkit.listeners.BukkitPlayerListener;
+import dev.neuralnexus.taterlandhardcore.bukkit.utils.NetherRoofRepair;
 import dev.neuralnexus.taterlandhardcore.common.TaterlandHardcore;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import static dev.neuralnexus.taterlandhardcore.common.Utils.*;
 
-public final class BukkitMain extends JavaPlugin {
+public final class BukkitTaterlandHardcorePlugin extends JavaPlugin {
     public TaterlandHardcore taterlandHardcore;
 
     // Singleton instance
-    private static BukkitMain instance;
-    public static BukkitMain getInstance() {
+    private static BukkitTaterlandHardcorePlugin instance;
+    public static BukkitTaterlandHardcorePlugin getInstance() {
         return instance;
     }
 
@@ -56,6 +58,9 @@ public final class BukkitMain extends JavaPlugin {
 
         // Register commands
         getCommand("untempban").setExecutor(new UnbanCommand());
+
+        // Schedule Nether roof repair
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(this, NetherRoofRepair::repairNetherRoof, 0L, 20L * 60L * 5L);
 
         // Plugin enable message
         getLogger().info("TaterlandHardcore has been enabled!");

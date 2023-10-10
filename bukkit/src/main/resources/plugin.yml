@@ -1,6 +1,6 @@
 name: TaterlandHardcore
 version: '${version}'
-main: dev.neuralnexus.taterlandhardcore.bukkit.BukkitMain
+main: dev.neuralnexus.taterlandhardcore.bukkit.BukkitTaterlandHardcorePlugin
 author: p0t4t0sandwich
 description: Plugin used by the Taterland Hardcore server.
 folia-supported: true

@@ -1,6 +1,6 @@
 package dev.neuralnexus.taterlandhardcore.bukkit.commands;
 
-import dev.neuralnexus.taterlandhardcore.bukkit.BukkitMain;
+import dev.neuralnexus.taterlandhardcore.bukkit.BukkitTaterlandHardcorePlugin;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import static dev.neuralnexus.taterlandhardcore.common.Utils.runTaskAsync;
 
 public class UnbanCommand implements CommandExecutor {
-    BukkitMain plugin = BukkitMain.getInstance();
+    BukkitTaterlandHardcorePlugin plugin = BukkitTaterlandHardcorePlugin.getInstance();
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {

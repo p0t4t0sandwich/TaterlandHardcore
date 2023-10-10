@@ -1,5 +1,5 @@
 plugins {
-    id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id('com.github.johnrengelman.shadow') version('8.1.1')
 }
 
 dependencies {
@@ -10,15 +10,22 @@ dependencies {
 }
 
 shadowJar {
-//    classifier = ''
-    configurations = [project.configurations.runtimeClasspath, project.configurations.shadow]
     dependencies {
         include(dependency("dev.dejvokep:boosted-yaml:1.3"))
     }
+    relocate('dev.dejvokep', 'dev.neuralnexus.taterlandhardcore.lib.dejvokep')
 
-    relocate 'dev.dejvokep', 'ca.sperrer.p0t4t0sandwich.tempbandeath.lib.dejvokep'
+    destinationDirectory = file('../target')
+    archiveFileName = "${project_name}-common-${version}.jar"
+}
+shadowJar.doLast {
+    task ->
+        ant.checksum(file: task.archivePath) {
+            hashAlgorithm = 'md5'
+            property = 'md5sum'
+        }
 }
 
 artifacts {
-    archives shadowJar
+    archives(shadowJar)
 }

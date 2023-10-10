@@ -14,6 +14,10 @@ import static com.google.common.math.IntMath.pow;
  * Bukkit entity listener
  */
 public class BukkitEntityListener implements Listener {
+    /**
+     * Fall damage debuff
+     * @param event The event
+     */
     @EventHandler
     public void onDamage(EntityDamageEvent event) {
         if (!(event.getEntity() instanceof Player)) return;
@@ -29,6 +33,10 @@ public class BukkitEntityListener implements Listener {
         }
     }
 
+    /**
+     * Combat concussion debuff
+     * @param event The event
+     */
     @EventHandler
     public void onEntityDamage(EntityDamageByEntityEvent event) {
         if (!(event.getEntity() instanceof Player)) return;
