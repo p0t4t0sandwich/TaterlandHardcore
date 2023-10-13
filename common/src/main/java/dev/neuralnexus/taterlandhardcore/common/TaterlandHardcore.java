@@ -147,4 +147,13 @@ public class TaterlandHardcore {
         }
         return false;
     }
+
+    /**
+     * Check if it's the weekend.
+     * @return Whether it's the weekend
+     */
+    public boolean isWeekend() {
+        int day = java.time.LocalDate.now().getDayOfWeek().getValue();
+        return day == 6 || day == 7;
+    }
 }
